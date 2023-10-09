@@ -24,6 +24,7 @@ $(function () {
             $("#locationhere").append("<p>Your longitude is: " + lon + "</p>");
             $("#locationhere").append("<p>Your Accuracy is: " + accuracy + "km</p>")
 
+            localStorage.setItem("location", JSON.stringify(currentLocation));
 
             // Check if location is stored in localStorage
             let storedLocation = localStorage.getItem("location");
@@ -55,7 +56,6 @@ $(function () {
                 latitude: lat,
                 longitude: lon
             };
-            localStorage.setItem("location", JSON.stringify(currentLocation));
         }
 
 
