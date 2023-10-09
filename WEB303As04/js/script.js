@@ -46,7 +46,7 @@ $(function () {
 
             } else {
                 // If no stored location, display welcome message
-                $("header").html("Welcome to E Corp!");
+                $("header").html("<h1>Welcome to E Corp!</h1>");
             }
 
             // Store current location in localStorage
