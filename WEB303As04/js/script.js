@@ -43,7 +43,7 @@ $(function () {
                 $("#locationhere").append(`<p>Stored Location: Latitude: ${storedLocation.latitude}, Longitude: ${storedLocation.longitude}, Distance Traveled: ${distance.toFixed(2)} km</p>`);
 
                 // Display welcome back message
-                $("header").text("<h2>" + `Welcome back to E Corp! You traveled ${distance.toFixed(2)} meters since your last visit.` + "</h2>");
+                $("locationhere").text("<h2>" + `Welcome back to E Corp! You traveled ${distance.toFixed(2)} meters since your last visit.` + "</h2>");
 
             } else {
                 // If no stored location, display welcome message
