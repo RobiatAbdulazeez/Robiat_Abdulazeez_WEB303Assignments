@@ -56,12 +56,12 @@ $(document).ready(function () {
     $('#theme-name').text('Books Theme');
 
     // Apply CSS styles to content-item-wrapper using jQuery
-    $('.content-item-wrapper').css({
-        'border': '1px solid black',
-        'width': '80%',
-        'padding': '10px',
-        'margin': '10px auto'
-    });
+    // $('.content-item-wrapper').css({
+    //     'border': '1px solid black',
+    //     'width': '80%',
+    //     'padding': '10px',
+    //     'margin': '10px auto'
+    // });
 
 });
 
