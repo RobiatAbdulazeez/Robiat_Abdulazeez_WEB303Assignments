@@ -63,45 +63,6 @@ $(document).ready(function () {
         'margin': '10px auto'
     });
     
-     // Button click event for successful update
-    $('#successful-update').on('click', function () {
-         let idToUpdate = 0; // ID of the ContentItem you want to update
-        let newItemValues = new ContentItem(idToUpdate, 'Updated Name', 'Updated Description', 'Updated Genre');
-        updateContentItemInArray(idToUpdate, newItemValues);
-        // Update the corresponding content on the page
-        refreshContent();
-    });
-    // Button click event for unsuccessful update
-    $('#unsuccessful-update').on('click', function () {
-        // Try to update a ContentItem unsuccessfully (using invalid values)
-        let idToUpdate = 1; // ID of the ContentItem you want to update
-        let newItemValues = new ContentItem(idToUpdate, null, null, null);
-        updateContentItemInArray(idToUpdate, newItemValues);
-        // Update the corresponding content on the page
-        refreshContent();
-    });
-    function updateContentItemInArray(idToUpdate, newItem) {
-        // Find the ContentItem with the given ID in the array
-        let itemToUpdate = contentItems.find(item => item.uniqueIdNumber === idToUpdate);
-
-        // Check if the item was found and the new values are not null
-        if (itemToUpdate && newItem.name !== null && newItem.description !== null && newItem.categoryGenre !== null) {
-            // Update the ContentItem properties
-            itemToUpdate.name = newItem.name;
-            itemToUpdate.description = newItem.description;
-            itemToUpdate.categoryGenre = newItem.categoryGenre;
-        }
-    }
-    function refreshContent() {
-        // Clear existing content
-        $('#content-item-list').empty();
-        // Loop through contentItems, generate HTML, and append to #content-item-list
-        contentItems.forEach(function (item) {
-            let contentItemHtml = item.toString();
-            $("#content-item-list").append(contentItemHtml);
-        });
-    }
-
 });
 
 
