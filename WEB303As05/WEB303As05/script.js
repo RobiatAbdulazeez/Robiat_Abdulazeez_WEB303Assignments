@@ -62,6 +62,29 @@ $(document).ready(function () {
         'padding': '10px',
         'margin': '10px auto'
     });
+     // Button click event for successful update
+    $('#successful-update').on('click', function () {
+        // Try to update a ContentItem successfully
+        contentItems[0].updateContentItem(0, 'Updated Name', 'Updated Description', 'Updated Genre');
+        // Update the corresponding content on the page
+        refreshContent();
+    });
+    // Button click event for unsuccessful update
+    $('#unsuccessful-update').on('click', function () {
+        // Try to update a ContentItem unsuccessfully (using invalid values)
+        contentItems[1].updateContentItem(1, null, null, null);
+        // Update the corresponding content on the page
+        refreshContent();
+    });
+    function refreshContent() {
+        // Clear existing content
+        $('#content-item-list').empty();
+        // Loop through contentItems, generate HTML, and append to #content-item-list
+        contentItems.forEach(function (item) {
+            let contentItemHtml = item.toString();
+            $("#content-item-list").append(contentItemHtml);
+        });
+    }
 
 });
 
