@@ -62,20 +62,36 @@ $(document).ready(function () {
         'padding': '10px',
         'margin': '10px auto'
     });
+    
      // Button click event for successful update
     $('#successful-update').on('click', function () {
-        // Try to update a ContentItem successfully
-        contentItems[0].updateContentItem(0, 'Updated Name', 'Updated Description', 'Updated Genre');
+         let idToUpdate = 0; // ID of the ContentItem you want to update
+        let newItemValues = new ContentItem(idToUpdate, 'Updated Name', 'Updated Description', 'Updated Genre');
+        updateContentItemInArray(idToUpdate, newItemValues);
         // Update the corresponding content on the page
         refreshContent();
     });
     // Button click event for unsuccessful update
     $('#unsuccessful-update').on('click', function () {
         // Try to update a ContentItem unsuccessfully (using invalid values)
-        contentItems[1].updateContentItem(1, null, null, null);
+        let idToUpdate = 1; // ID of the ContentItem you want to update
+        let newItemValues = new ContentItem(idToUpdate, null, null, null);
+        updateContentItemInArray(idToUpdate, newItemValues);
         // Update the corresponding content on the page
         refreshContent();
     });
+    function updateContentItemInArray(idToUpdate, newItem) {
+        // Find the ContentItem with the given ID in the array
+        let itemToUpdate = contentItems.find(item => item.uniqueIdNumber === idToUpdate);
+
+        // Check if the item was found and the new values are not null
+        if (itemToUpdate && newItem.name !== null && newItem.description !== null && newItem.categoryGenre !== null) {
+            // Update the ContentItem properties
+            itemToUpdate.name = newItem.name;
+            itemToUpdate.description = newItem.description;
+            itemToUpdate.categoryGenre = newItem.categoryGenre;
+        }
+    }
     function refreshContent() {
         // Clear existing content
         $('#content-item-list').empty();
