@@ -1,0 +1,55 @@
+html,
+body {
+    margin: 0 auto;
+    padding: 0;
+    background-color: rgb(212, 194, 171);
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: blue;
+}
+
+button {
+    width: 100%;
+    background-color: bisque;
+    font-size: large;
+}
+
+.accord-panel {
+    display: none;
+}
+
+.accord {
+    list-style: none;
+}
+
+/* tab panel style */
+.tab-list {
+    margin: 0;
+    padding: 0;
+}
+
+.tab-list li {
+    display: inline-block;
+    background-color: rgb(40, 216, 240);
+}
+
+.tab-list li a {
+    display: block;
+    color: blue;
+    padding: 3px 10px 3px 10px;
+}
+
+.tab-list li.active {
+    background-color: plum;
+}
+
+.tab-panel {
+    display: none;
+    background-color: plum;
+    min-height: 70px;
+    overflow: auto;
+    padding: 10px;
+}
