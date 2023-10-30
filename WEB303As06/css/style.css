@@ -2,18 +2,25 @@ html,
 body {
     margin: 0 auto;
     padding: 0;
-    background-color: rgb(212, 194, 171);
+    background-color: cornsilk;
 }
+
+header img {
+    width: 60%;
+    padding-left: 20%;
+    height: 30%;
+}
+
 
 h1,
 h2 {
     text-align: center;
-    color: blue;
+    color: rgba(139, 95, 36, 0.897);
 }
 
 button {
     width: 100%;
-    background-color: bisque;
+    background-color: rgb(224, 129, 12);
     font-size: large;
 }
 
@@ -33,22 +40,22 @@ button {
 
 .tab-list li {
     display: inline-block;
-    background-color: rgb(40, 216, 240);
+    background-color: rgb(226, 146, 85);
 }
 
 .tab-list li a {
     display: block;
-    color: blue;
+    color: rgb(141, 119, 93);
     padding: 3px 10px 3px 10px;
 }
 
 .tab-list li.active {
-    background-color: plum;
+    background-color: rgb(241, 209, 185);
 }
 
 .tab-panel {
     display: none;
-    background-color: plum;
+    background-color: rgb(241, 209, 185);
     min-height: 70px;
     overflow: auto;
     padding: 10px;
