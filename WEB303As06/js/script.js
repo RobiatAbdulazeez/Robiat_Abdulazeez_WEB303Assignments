@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  $('.accord-label').on('click', function (e) {
+  $('.accord-label1').on('click', function (e) {
     //prevent the default button action to prevent the submit function
     e.preventDefault();
     //get the button that we are clicking
     let $this = $(this);
     //  loop through every panel
-    $('accord.panel').each(function () {
+    $('accord.panel1').each(function () {
       //make sure that showing class is removed 
       $this.removeClass('showing');
 
@@ -16,7 +16,27 @@ $(document).ready(function () {
 
 
     //hide other panels
-    $('.accord-panel').not($this.next()).slideUp();
+    $('.accord-panel1').not($this.next()).slideUp();
+
+  });
+   $('.accord-label2').on('click', function (e) {
+    //prevent the default button action to prevent the submit function
+    e.preventDefault();
+    //get the button that we are clicking
+    let $this = $(this);
+    //  loop through every panel
+    $('accord.panel2').each(function () {
+      //make sure that showing class is removed 
+      $this.removeClass('showing');
+
+    })
+    //show the panel that is for the button we clicked
+    $this.toggleClass();
+    $this.next().slideToggle();
+
+
+    //hide other panels
+    $('.accord-panel2').not($this.next()).slideUp();
 
   });
 
