@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     })
     //show the panel that is for the button we clicked
-    $this.toggleClass();
+    $this.toggleClass('showing');
     $this.next().slideToggle();
 
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     })
     //show the panel that is for the button we clicked
-    $this.toggleClass();
+    $this.toggleClass('showing');
     $this.next().slideToggle();
 
 
