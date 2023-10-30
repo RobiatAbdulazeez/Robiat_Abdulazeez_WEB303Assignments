@@ -24,7 +24,10 @@ button {
     font-size: large;
 }
 
-.accord-panel {
+.accord-panel1 {
+    display: none;
+}
+.accord-panel2 {
     display: none;
 }
 
