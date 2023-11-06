@@ -27,12 +27,8 @@ $(function () {
         span.on('click', function (e) {
             e.preventDefault();
             $(modal).hide();
-        })
-
-        $('#close').on('click', function () {
-
-            $(".modal-content").hide()
         });
+
     });
 });
 
