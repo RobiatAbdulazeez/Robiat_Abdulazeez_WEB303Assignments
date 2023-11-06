@@ -1,23 +1,59 @@
-(function ($) {
-  $.fn.customPhotoViewer = function () {
-    // Plugin logic for photo viewer
+$(function () {
 
-    // Handle thumbnail click event to open the modal
-    this.on('click', '.thumbnail-anchor', function (e) {
-      e.preventDefault();
-      var imageUrl = $(this).attr('href');
+  var request; // Last image request
+  var $current; // Current image
+  var cache = {}; // Cache object
+  var $frame = $('.photo-box'); // Container
+  var $thumbs = $('.thumbnail-anchor'); // Container
 
-      // Open modal with the clicked image
-      // Implement modal display logic here
-      // You can use a pre-existing modal library or create a custom modal
-
-      // Example of opening a modal with jQuery UI (ensure jQuery UI is included)
-      // $('#modal').html('<img src="' + imageUrl + '">').dialog({ modal: true });
-
-      // For a custom modal, you might need to create your own modal HTML structure and styles
+  function crossfade($img) { // New image as parameter
+    if ($current) { // If image showing
+      $current.stop().fadeOut('slow'); // Stop animation & fade out
+    }
+    $img.css({ // Set CSS margins for new img
+      marginLeft: -$img.width() / 2, // Neg margin 1/2 image width
+      marginTop: -$img.height() / 2 // Neg margin 1/2 image height
     });
+    $img.stop().fadeTo('slow', 1); // Stop animation & fade in
+    $current = $img; // New image is current one
+  }
 
-    // Ensure method chaining
-    return this;
-  };
-})(jQuery);
+  $(document).on('click', '.thumbnail-anchor', function customPhotoViewer(e) { // Click on thumb
+    var $img; // Local var called $img
+    var src = this.href; // Store path to image
+    var request = src; // Store latest image
+    e.preventDefault(); // Stop default link behavior
+    $thumbs.removeClass('active'); // Remove active from thumbs
+    $(this).addClass('active'); // Add active to clicked one
+    $frame.removeClass("default-text");
+    if (cache.hasOwnProperty(src)) { // If cache contains this img
+      if (cache[src].isLoading === false) { // and it's not loading
+        crossfade(cache[src].$img); // Call crossfade() function
+      }
+    } else { // Otherwise it is not in the cache
+      $img = $('<img/>'); // Store empty <img/> in $img
+      cache[src] = { // Store this image in cache
+        $img: $img, // Add the path to the image
+        isLoading: true // Set isLoading to false
+      };
+
+      // When image has loaded this code runs
+      $img.on('load', function () { // When image loaded
+        $(this).hide(); // Hide it
+        // Remove is-loading class & append image
+        $frame.removeClass('is-loading').append($img);
+        cache[src].isLoading = false; // Update isLoading in cache
+        // If still most recently requested image then
+        if (request === src) {
+          crossfade($(this)); // Call crossfade() function
+        } // to solve async load issue
+      });
+      $frame.addClass('is-loading'); // Add is-loading to frame
+      $img.attr({ // Set attributes on <img>
+        'src': src, // src attribute loads image\
+        'alt': this.title || '' // Add title if one given
+      });
+    }
+  });
+
+});
