@@ -56,11 +56,12 @@ function highlightRows(searchTerm) {
   });
 
   // Reset styling for rows that don't match the search term
-  $('#charactersTable tbody tr').not('.highlight').css({
+  $('#charactersTable tbody tr:not(.highlight)').removeClass('highlight').css({
     'background-color': '',
     'color': ''
   });
 }
+
 
 
 
