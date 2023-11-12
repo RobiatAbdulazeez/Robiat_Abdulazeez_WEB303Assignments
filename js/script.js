@@ -57,8 +57,8 @@ function highlightRows(searchTerm) {
 
   // Remove 'highlight' class and reset styling for rows that don't match the search term
   $('#charactersTable tbody tr:not(.highlight)').removeClass('highlight').css({
-    'background-color': '',
-    'color': ''
+    'background-color': 'rgb(218,239,241)',
+    'color': ' #D1D1D1'
   });
 }
 
