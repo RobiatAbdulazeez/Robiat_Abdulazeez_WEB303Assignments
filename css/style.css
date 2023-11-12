@@ -1,10 +1,10 @@
 
-#charactersTable tbody tr.highlight {
+.highlight {
   background-color: darkgreen;
   color: white;
 }
 .highlight td{
-  color:black;
+  color:white;
 }
 
 body {
