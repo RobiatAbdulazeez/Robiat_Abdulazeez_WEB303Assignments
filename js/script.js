@@ -55,12 +55,13 @@ function highlightRows(searchTerm) {
     }
   });
 
-  // Remove 'highlight' class from rows that don't match the search term
-  $('#charactersTable tbody tr:not(.highlight)').css({
+  // Remove 'highlight' class and reset styling for rows that don't match the search term
+  $('#charactersTable tbody tr:not(.highlight)').removeClass('highlight').css({
     'background-color': '',
     'color': ''
   });
 }
+
 
 
 function filterCharacters(startLetterA, startLetterB) {
