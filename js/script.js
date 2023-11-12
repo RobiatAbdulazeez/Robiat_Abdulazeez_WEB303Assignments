@@ -54,7 +54,14 @@ function highlightRows(searchTerm) {
       $(this).removeClass('highlight');
     }
   });
+
+  // Remove 'highlight' class from rows that don't match the search term
+  $('#charactersTable tbody tr:not(.highlight)').css({
+    'background-color': '',
+    'color': ''
+  });
 }
+
 
 function filterCharacters(startLetterA, startLetterB) {
   const filteredData = charactersData.filter(function (character) {
