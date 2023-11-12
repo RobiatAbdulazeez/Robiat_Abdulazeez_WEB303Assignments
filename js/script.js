@@ -45,10 +45,13 @@ function displayCharacters(characters) {
 }
 
 function highlightRows(searchTerm) {
-  searchTerm = searchTerm.toLowerCase();
+  searchTerm = searchTerm.toLowerCase().trim(); // Trim leading and trailing whitespaces
+  
   $('#charactersTable tbody tr').each(function () {
     const firstName = $(this).find('td:first').text().toLowerCase();
-    if (firstName.includes(searchTerm)) {
+    
+    // Check if the search term is not empty and is included in the first name
+    if (searchTerm !== '' && firstName.includes(searchTerm)) {
       $(this).addClass('highlight');
     } else {
       $(this).removeClass('highlight');
