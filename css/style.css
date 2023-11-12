@@ -1,6 +1,10 @@
 .highlight {
   background-color: darkgreen;
   color: white;
+  
+}
+.highlight td{
+  color:white;
 }
 
 body {
@@ -51,8 +55,8 @@ td {
 
 }
 
-.highlight {
+/* .highlight {
   background-color: darkgreen;
   color: #FFFFFF;
 
-}
+} */
