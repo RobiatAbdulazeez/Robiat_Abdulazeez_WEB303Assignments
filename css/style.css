@@ -3,6 +3,9 @@
   background-color: darkgreen;
   color: white;
 }
+.highlight td{
+  color:black;
+}
 
 body {
   font-family: 'Arial', sans-serif;
