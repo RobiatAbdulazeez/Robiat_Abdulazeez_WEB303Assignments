@@ -1,0 +1,51 @@
+[
+  {
+    "firstName": "Lee",
+    "lastName": "Jae-wook",
+    "gender": "Male",
+    "role": "Jang Uk",
+    "age": 27
+  },
+  {
+    "firstName": "Jung",
+    "lastName": "So-min",
+    "gender": "Female",
+    "role": "Nak-su",
+    "age": 25
+  },
+  {
+    "firstName": "Go",
+    "lastName": "Youn-jung",
+    "gender": "Female",
+    "role": "Jin Bu-yeon",
+    "age": 26
+  },
+  {
+    "firstName": "Hwang",
+    "lastName": "Min-hyun",
+    "gender": "Male",
+    "role": "Seo Yul",
+    "age": 29
+  },
+  {
+    "firstName": "Yoo",
+    "lastName": "Jun-sang",
+    "gender": "Male",
+    "role": "Park Jin",
+    "age": 45
+  },
+  {
+    "firstName": "Yoo",
+    "lastName": "In-soo",
+    "gender": "Male",
+    "role": "Park Dang-gu",
+    "age": 25
+  },
+  {
+    "firstName": "Oh",
+    "lastName": "Na-ra",
+    "gender": "Female",
+    "role": "Maidservant Kim Yeon",
+    "age": 40
+  }
+]

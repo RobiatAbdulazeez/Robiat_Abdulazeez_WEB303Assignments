@@ -1,0 +1,58 @@
+.highlight {
+  background-color: darkgreen;
+  color: white;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: rgb(218, 239, 241);
+  color: #D1D1D1;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #9A79DE;
+}
+
+label,
+th,
+td {
+  color: black;
+
+}
+
+input,
+button {
+  padding: 8px;
+  margin: 4px;
+  border: none;
+  background-color: rgb(85, 108, 170);
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: #D1D1D1;
+
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 20px auto;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #9A79DE;
+
+}
+
+.highlight {
+  background-color: darkgreen;
+  color: #FFFFFF;
+
+}
