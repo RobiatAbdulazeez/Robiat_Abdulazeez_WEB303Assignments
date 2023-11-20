@@ -4,7 +4,7 @@
     "lastName": "Jae-wook",
     "gender": "Male",
     "role": "Jang Uk",
-    "age": 27,
+    "age": 29,
     "dob": "1994-04-01"
   },
   {
@@ -12,7 +12,7 @@
     "lastName": "So-min",
     "gender": "Female",
     "role": "Nak-su",
-    "age": 25,
+    "age": 27,
     "dob": "1996-07-21"
   },
   {
@@ -28,7 +28,7 @@
     "lastName": "Min-hyun",
     "gender": "Male",
     "role": "Seo Yul",
-    "age": 29,
+    "age": 33,
     "dob": "1990-04-15"
   },
   {
@@ -36,7 +36,7 @@
     "lastName": "Jun-sang",
     "gender": "Male",
     "role": "Park Jin",
-    "age": 45,
+    "age": 30,
     "dob": "1993-02-01"
   },
   {
@@ -52,7 +52,7 @@
     "lastName": "Na-ra",
     "gender": "Female",
     "role": "Maidservant Kim Yeon",
-    "age": 40,
+    "age": 43,
     "dob": "1980-04-25"
   }
 ]
