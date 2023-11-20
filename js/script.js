@@ -47,78 +47,70 @@ $.ajax({
 
             // add rows to table 
             $('tbody').append($row);
+        });
         
-        //Start Sorting
+       // Start Sorting
         var compare = {
-            name: function(a,b){
+            name: function (a, b) {
                 a = a.replace(/^the /i, '');
-                b =  b.replace(/^the /i, '');
-        
-                if (a < b){
+                b = b.replace(/^the /i, '');
+
+                if (a < b) {
                     return -1;
                 } else {
-                    return a>b ? 1 : 0;
+                    return a > b ? 1 : 0;
                 }
             },
             age: function (a, b) {
                 return a - b;
             },
-    
-            date: function(a,b){
+            date: function (a, b) {
                 a = new Date(a);
                 b = new Date(b);
-        
+
                 return a - b;
             }
         };
-        
-        $('.sortable').each(function(){
+
+        $('.sortable').each(function () {
             var $table = $(this);
             var $tbody = $table.find('tbody');
             var $controls = $table.find('th a');
             var rows = $tbody.find('tr').toArray();
-            //copy/clown the row that is existing row
-            const deepCopy =[...rows];
-        
-            $controls.on('click',function(){
+            // copy/clone the row that is an existing row
+            const deepCopy = [...rows];
+
+            $controls.on('click', function () {
                 var $header = $(this);
                 var order = $header.data('sort');
                 var column;
-              
-                //If selected item has ascending or descending class, reverse contents
-                if ($header.is('.ascending')){
-                    $header.removeClass(".ascending no-sort");
-                    $headingRow.addClass(".descending");
-                   
+
+                // If selected item has ascending or descending class, reverse contents
+                if ($header.is('.ascending')) {
+                    $header.removeClass("ascending no-sort");
+                    $header.addClass("descending");
                     $tbody.append(rows.reverse());
-                    
-        
-                }else if($header.is('.decending')){
+                } else if ($header.is('.descending')) {
                     $header.removeClass('descending ascending ');
                     $header.addClass('no-sort');
                     $tbody.append(deepCopy);
-
                 } else {
                     $header.addClass('ascending');
                     $header.removeClass('no-sort');
-                    //Remove asc or desc from all other headers
+                    // Remove asc or desc from all other headers
                     $header.siblings().removeClass('ascending descending no-sort');
-                    
-                    if (compare.hasOwnProperty(order)){
+
+                    if (compare.hasOwnProperty(order)) {
                         column = $controls.index(this);
-                     rows.sort(function(a,b){
+                        rows.sort(function (a, b) {
                             a = $(a).find('td').eq(column).text();
                             b = $(b).find('td').eq(column).text();
-                            console.log('a: ',a,'   b: ', b)
-                            return  compare[order](a,b);
-                            
-                            
+                            return compare[order](a, b);
                         });
                         $tbody.append(rows);
                     }
                 }
-            })
-        })
-    });
+            });
+        });
     }
-})
+});
