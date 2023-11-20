@@ -19,9 +19,9 @@ let $headingRow = $('<tr/>');
 $('thead').append($headingRow);
 $headingRow.append($('<th/>').html('<a data-sort="name">First Name</a>'));
 $headingRow.append($('<th/>').html('<a data-sort="name">Last Name</a>'));
-$headingRow.append($('<th/>').html('<a data-sort="name">Gender</a>'));
-$headingRow.append($('<th/>').html('<a data-sort="name">Role</a>'));
-$headingRow.append($('<th/>').html('<a data-sort="name">Age</a>'));
+$headingRow.append($('<th/>').html('<a data-sort="gender">Gender</a>'));
+$headingRow.append($('<th/>').html('<a data-sort="role">Role</a>'));
+$headingRow.append($('<th/>').html('<a data-sort="age">Age</a>'));
 $headingRow.append($('<th/>').html('<a data-sort="date">Date Of Birth</a>'));
 
 // get content of json file 
@@ -60,13 +60,10 @@ $.ajax({
                     return a>b ? 1 : 0;
                 }
             },
-            duration: function(a,b){
-                a = a.split('-');
-                b = b.split('-');
-        
+            age: function (a, b) {
                 return a - b;
-        
             },
+    
             date: function(a,b){
                 a = new Date(a);
                 b = new Date(b);
