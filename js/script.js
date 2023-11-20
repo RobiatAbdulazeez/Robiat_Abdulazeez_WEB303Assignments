@@ -6,7 +6,7 @@ $('body').append($table);
 // add a title for the table before table 
 
 $('table').before('<h1/>');
-$('h1').text('Sorting Characters');
+// $('h1').text('Sorting Characters');
 
 // add a thead and tbody on the table 
 $('table').append('<thead/>');
@@ -43,7 +43,7 @@ $.ajax({
             $row.append($('<td></td>').text(value.gender));
             $row.append($('<td></td>').text(value.role));
             $row.append($('<td></td>').text(value.age));
-            $row.append($('<td></td>').text(value.date-of-birth));
+            $row.append($('<td></td>').text(value.dob));
 
             // add rows to table 
             $('tbody').append($row);
