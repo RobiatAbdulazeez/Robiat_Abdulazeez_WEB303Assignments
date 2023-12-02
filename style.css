@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(243, 230, 214);
+}
+
+form {
+  margin: 20px 35%;
+  width: 80%;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input {
+  margin: 10px 10px;
+  padding: 5px;
+}
