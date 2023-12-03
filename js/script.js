@@ -1,119 +1,118 @@
-//do not forget to enter document.ready function
-//also jquery library should be included
+document.addEventListener("DOMContentLoaded", function () {
+  // Creating the form and its elements 
 
+  let form = document.createElement("form");
+  form.id = "registrationForm";
 
-//adding radio buttons for the courses
-let h2 = document.querySelector('h2');
-for (let i = 0; i < countries.length; i++) {
-  let check = document.createElement('input');
-  check.setAttribute('type', 'checkbox');
-  check.name = 'checked';
-  check.id = countries[i];
-  check.value = countries[i];
-  let lable = document.createElement('label');
-  lable.setAttribute('for', countries[i]);
-  lable.innerHTML = countries[i];
-  h2.after(lable);
-  lable.appendChild(check);
+  let usernameLabel = createLabel("Username:");
+  let usernameInput = createInput("text", "username", true);
 
-}
+  let passwordLabel = createLabel("Password (Must be at least 12 characters):");
+  let passwordInput = createInput("password", "password", false);
 
-//We are going to write a listener for the checked buttons
-//getting the name and one of the radio buttons
-//will create a message
+  let password2Label = createLabel("Re-enter your Password:");
+  let password2Input = createInput("password", "password2", false);
+  let passwordMatchMessage = document.createElement("span");
+  passwordMatchMessage.id = "passwordMatchMessage";
 
-let form = document.querySelector('#registration');
-let subBtn = document.querySelector('#submit');
-let parMsg = document.createElement('p');
-let elements = form.elements;
+  let termsLabel = createLabel("I accept the terms of service:");
+  let termsInput = createInput("checkbox", "terms", false, "yes");
 
-subBtn.addEventListener('click', function (e) {
-  e.preventDefault();
+  let countryLabel = createLabel("Select your country:");
+  let countrySelect = document.createElement("select");
+  countrySelect.id = "country";
+  countrySelect.name = "country";
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.text = "Select your country";
+  countrySelect.appendChild(defaultOption);
+  countries.forEach(function (country) {
+    const option = document.createElement("option");
+    option.value = country.code;
+    option.text = country.name;
+    countrySelect.appendChild(option);
+  });
 
-  if (validation()) {
-    alert('This is a demp. No form is submitted');
+  let submitButton = createInput("submit", "submit", true, "Submit");
+  submitButton.disabled = true;
+
+  let welcomeMessage = document.createElement("p");
+  welcomeMessage.id = "welcomeMessage";
+  welcomeMessage.style.display = "none";
+
+  // Append elements to the form
+  form.appendChild(usernameLabel);
+  form.appendChild(usernameInput);
+  form.appendChild(passwordLabel);
+  form.appendChild(passwordInput);
+  form.appendChild(password2Label);
+  form.appendChild(password2Input);
+  form.appendChild(passwordMatchMessage);
+  form.appendChild(termsLabel);
+  form.appendChild(termsInput);
+  form.appendChild(countryLabel);
+  form.appendChild(countrySelect);
+  form.appendChild(submitButton);
+  form.appendChild(welcomeMessage);
+
+  // Append form to the body
+  document.body.appendChild(form);
+
+  // Event listeners for form controls
+  usernameInput.addEventListener("input", validateForm);
+  passwordInput.addEventListener("input", validateForm);
+  password2Input.addEventListener("input", validateForm);
+  termsInput.addEventListener("change", validateForm);
+  countrySelect.addEventListener("change", validateForm);
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Display welcome message with the country code
+    var selectedCountryCode = countrySelect.value;
+    welcomeMessage.innerText = `Welcome ${usernameInput.value}! The country code you selected is ${selectedCountryCode}.`;
+    welcomeMessage.style.display = "block";
+
+  });
+
+  // Function to create label
+  function createLabel(text) {
+    let label = document.createElement("label");
+    label.htmlFor = text.toLowerCase().replace(/\s/g, "");
+    label.innerText = text;
+    return label;
   }
-  let user = elements.username.value;
-  let checkboxes = document.getElementsByName('checked');
-  let ok = false;
-  let code;
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      ok = true;
-      code = checkboxes[i].value;
+
+  // Function to create input element
+  function createInput(type, id, required, value) {
+    let input = document.createElement("input");
+    input.type = type;
+    input.id = id;
+    input.name = id;
+    if (required) {
+      input.required = true;
+    }
+    if (value) {
+      input.value = value;
+    }
+    return input;
+  }
+
+  // Function to validate the form and enable/disable the submit button
+  function validateForm() {
+    let isUsernameValid = usernameInput.value.trim() !== "";
+    let isPasswordValid = passwordInput.value.length >= 12;
+    let isPasswordMatch = passwordInput.value === password2Input.value;
+    let isTermsChecked = termsInput.checked;
+    let isCountrySelected = countrySelect.value !== "";
+
+    submitButton.disabled = !(isUsernameValid && isPasswordValid && isPasswordMatch && isTermsChecked && isCountrySelected);
+
+    // Display password match message
+    if (!isPasswordMatch) {
+      passwordMatchMessage.innerText = "Passwords do not match!";
+    } else {
+      passwordMatchMessage.innerText = "";
     }
   }
-  let msg = `Welcome ${user}!The country code you selected is  ${code} `;
-  parMsg.textContent = msg;
-  form.appendChild(parMsg);
 });
-
-//form validation
-
-let username = document.getElementById('username');
-let pass = document.getElementById('password');
-let repass = document.getElementById('checkpsd');
-
-const validation = function () {
-  if (fname.value == '') {
-    alert("Please enter your username");
-    fname.focus();
-    return false;
-
-  }
-
-  if (pass.value == '' || pass.value.length <= 12) {
-    alert("Please enter your password and it should be more than 12 characters");
-    pass.focus();
-    return false;
-  }
-
-  if (repass.value == '' || pass.value != repass.value) {
-    alert("Please enter your password and it should be more than 12 characters");
-    pass.focus();
-    return false;
-  }
-
-  let checkboxes = document.getElementsByName('checked');
-  let ok = false;
-  let code;
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      ok = true;
-      code = checkboxes[i].value;
-    }
-  }
-  if (!ok) {
-    alert("Please check on box");
-    return false;
-  }
-
-
-  return true;
-}
-
-//we need our button to be disabled until the form is validated
-//validation will happen witth any input
-
-subBtn.classList.remove('enabled');
-subBtn.ariaDisabled = true;
-subBtn.disabled = true;
-subBtn.classList.add('disabled');
-
-let inputs = document.querySelectorAll('#registration input');
-
-for (let i = 0; i < inputs.length; i++) {
-  let checkValid = function () {
-    if (!validation()) {
-      subBtn.disabled = true;
-      subBtn.classList.add('disabled');
-    }
-    else {
-      subBtn.disabled = false;
-      subBtn.classList.remove('disabled');
-      alert('Demo Only. No form is submitted');
-    }
-  }
-  inputs[i].addEventListener('input', checkValid
-  );
-}
